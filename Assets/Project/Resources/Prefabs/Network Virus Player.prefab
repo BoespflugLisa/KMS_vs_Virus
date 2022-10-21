@@ -59,6 +59,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3957687750341607814}
   - component: {fileID: 3106246096064563326}
+  - component: {fileID: 2454931698911194272}
   - component: {fileID: 4246550261765012534}
   - component: {fileID: 7536946045503720961}
   - component: {fileID: 5058280257163625507}
@@ -107,6 +108,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 2454931698911194272}
   - {fileID: 9134663426545164465}
   - {fileID: 8398356850266221446}
   - {fileID: 5563473752335987545}
@@ -116,6 +118,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2454931698911194272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3957687750341607815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2428abb35b4facd4e9b7d0f3f0ebaa07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  MaxHp: 0
+  SpawnPointPool: {fileID: 0}
+  isHtcUser: 0
 --- !u!114 &4246550261765012534
 MonoBehaviour:
   m_ObjectHideFlags: 0

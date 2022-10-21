@@ -191,8 +191,6 @@ namespace WS3
                 if (isHTCuser)
                 {
                     goFreeLookCameraRig.SetActive(false);
-                    var vir_ui = UserMeInstance.transform.Find("SteamVRObjects/LeftHand/UI");
-                    vir_ui.gameObject.SetActive(true);
                 }
                 else
                 {

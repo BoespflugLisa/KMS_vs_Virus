@@ -12,7 +12,7 @@ public class ShieldBehavior : MonoBehaviour
 
     private void Awake()
     {
-        BaseScale = new Vector3((float)1.5, (float)0.01, (float)1.5);
+        BaseScale = new Vector3((float)0.5, (float)0.01, (float)0.5);
         ShieldPoint = MaxShieldPoint;
     }
     void Start()

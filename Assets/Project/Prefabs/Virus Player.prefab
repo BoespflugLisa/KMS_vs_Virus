@@ -9875,7 +9875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1061774454707960810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12339,6 +12339,7 @@ MonoBehaviour:
   healthBar: {fileID: 3931600614699692394}
   MaxHp: 0
   SpawnPointPool: {fileID: 5435282372077218078, guid: f8d23751599fb844ba42c73ebb375d51, type: 3}
+  isHtcUser: 0
 --- !u!114 &6541672714683602834
 MonoBehaviour:
   m_ObjectHideFlags: 0

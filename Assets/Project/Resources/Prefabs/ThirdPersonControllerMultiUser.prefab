@@ -1415,6 +1415,7 @@ MonoBehaviour:
   healthBar: {fileID: 4470699915560198466}
   MaxHp: 0
   SpawnPointPool: {fileID: 5435282372077218078, guid: f8d23751599fb844ba42c73ebb375d51, type: 3}
+  isHtcUser: 0
 --- !u!114 &6430679644019944091
 MonoBehaviour:
   m_ObjectHideFlags: 0

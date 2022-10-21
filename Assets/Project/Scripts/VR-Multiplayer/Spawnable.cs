@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using WS3;
 
 public class Spawnable : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -11,8 +12,15 @@ public class Spawnable : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] public Image healthBar;
     [SerializeField] public int MaxHp;
 
+
     [SerializeField] GameObject SpawnPointPool;
 
+    private GameObject virusPlayer;
+    [HideInInspector] public bool isHtcUser;
+    private float healthVirus;
+
+
+   
     private void Awake()
     {
         MaxHp = AppConfig.Inst.LifeNumber;
@@ -21,7 +29,13 @@ public class Spawnable : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Start()
     {
-
+        var vrm = gameObject.GetComponent<VRManager>();
+        if (vrm != null)
+        {
+            isHtcUser = true;
+            virusPlayer = vrm.virusPlayer;
+        }
+        
         Health = MaxHp;
         previousHealth = MaxHp;
         
@@ -42,7 +56,18 @@ public class Spawnable : MonoBehaviourPunCallbacks, IPunObservable
 
     void HealthUpdate()
     {
-        var material = healthBar;//.GetComponent<Image>();//.gameObject.GetComponent<Image>();
+        Image material;
+        if (!isHtcUser)
+        {
+            material = healthBar;
+        }
+        else
+        {
+            material = virusPlayer.GetComponent<Spawnable>().healthBar;
+            virusPlayer.GetComponent<Spawnable>().Health = Health;
+        }
+
+        //.GetComponent<Image>();//.gameObject.GetComponent<Image>();
         Debug.Log(healthBar);
         float ratio = (float)Health / MaxHp;
 
