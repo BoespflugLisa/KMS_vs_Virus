@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b356d1c3fadc84a499d48dd8d3c6bd30
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - GameObjectLocalPlayerColor: {instanceID: 0}
+  - AntiViralSpawner: {instanceID: 0}
+  - ViralSpawner: {instanceID: 0}
+  - ViralPrefab: {fileID: 5118011764979633838, guid: c9f7adf1ea691894190439709e389b88, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
