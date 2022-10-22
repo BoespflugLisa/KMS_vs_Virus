@@ -5036,7 +5036,7 @@ GameObject:
   - component: {fileID: 8268342649354642252}
   - component: {fileID: 3272372769706982647}
   m_Layer: 0
-  m_Name: Body Particles (1)
+  m_Name: Body Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5051,7 +5051,7 @@ Transform:
   m_GameObject: {fileID: 4262665763748258931}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.7, z: 1}
+  m_LocalScale: {x: 1, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8875523976038983905}
@@ -12264,7 +12264,6 @@ GameObject:
   - component: {fileID: 7576979812438304635}
   - component: {fileID: 7576979812428334711}
   - component: {fileID: 2569088273950687377}
-  - component: {fileID: 6541672714683602834}
   - component: {fileID: 2924204224293211754}
   m_Layer: 0
   m_Name: Virus Player
@@ -12340,26 +12339,6 @@ MonoBehaviour:
   MaxHp: 0
   SpawnPointPool: {fileID: 5435282372077218078, guid: f8d23751599fb844ba42c73ebb375d51, type: 3}
   isHtcUser: 0
---- !u!114 &6541672714683602834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7576979812438742787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b356d1c3fadc84a499d48dd8d3c6bd30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pressDuration: 0
-  MaxHp: 0
-  isHTCuser: 1
-  SpawnPoint: []
-  SpawnPointPool: {fileID: 5435282372077218078, guid: f8d23751599fb844ba42c73ebb375d51, type: 3}
-  GameObjectLocalPlayerColor: {fileID: 0}
-  ViralSpawner: {fileID: 0}
-  ViralPrefab: {fileID: 0}
 --- !u!54 &2924204224293211754
 Rigidbody:
   m_ObjectHideFlags: 0

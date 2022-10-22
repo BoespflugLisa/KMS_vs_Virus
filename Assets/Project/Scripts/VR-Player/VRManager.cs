@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace WS3
 {
-    public class VRManager : MonoBehaviourPunCallbacks //, IPunObservable
+    public class VRManager : MonoBehaviourPunCallbacks
     {
         [SerializeField]
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
@@ -20,12 +20,6 @@ namespace WS3
 
         GameObject goFreeLookCameraRig;
 
-        //private Color ColorShotVirus;
-
-       /* private int Health, previousHealth;
-        private Image healthBar;
-        [SerializeField] public int MaxHp;*/
-
         private float DelayShoot;
 
         private bool canFire = true;
@@ -36,28 +30,20 @@ namespace WS3
 
         private void Awake()
         {
-            //MaxHp = AppConfig.Inst.LifeNumber;
 
             if (photonView.IsMine)
             {
                 Debug.LogFormat("Avatar UserMe created for userId {0}", photonView.ViewID);
                 UserMeInstance = gameObject;
+                virusPlayer = GameObject.FindGameObjectWithTag("Virus Player");
 
             }
         }
 
         private void Start()
         {
-            virusPlayer = GameObject.FindGameObjectWithTag("Virus Player");
-            /*healthBar = virusPlayer.GetComponent<UserManager>().healthBar;
-
-            Health = MaxHp;
-            previousHealth = MaxHp;*/
             DelayShoot = AppConfig.Inst.DelayShoot;
-
             updateGoFreeLookCameraRig();
-
-            //HealthUpdate();
         }
 
         // Update is called once per frame
@@ -89,14 +75,6 @@ namespace WS3
             }
         }
 
-        /*public void HitByViralCharge()
-        {
-            Debug.Log("HIT BY CHARGE");
-            var rb = GetComponent<Rigidbody>();
-            rb.AddForce((-transform.forward + (transform.up * 0.1f)) * 1.5f, ForceMode.Impulse);
-            UserMeInstance.GetComponent<Spawnable>().TakeDamage();
-        }
-*/
 
         IEnumerator ShootDelayCoroutine()
         {

@@ -9,7 +9,7 @@ using Valve.VR;
 
 namespace WS3
 {
-    public class UserManager : MonoBehaviourPunCallbacks
+    public class UserManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         [SerializeField]
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
@@ -22,12 +22,8 @@ namespace WS3
 
         public bool isHTCuser;
 
-        private int Health, previousHealth;
-        //[SerializeField] public Image healthBar;
 
         private GameObject kms_ui;
-
-        //private Color ColorShotKMS;
         
 
         private float DelayShoot;
@@ -68,20 +64,11 @@ namespace WS3
         [PunRPC]
         void ThrowCharge(Vector3 position, Vector3 directionAndSpeed, PhotonMessageInfo info)
         {
-            // Tips for Photon lag compensation. Il faut compenser le temps de lag pour l'envoi du message.
-            // donc décaler la position de départ de la balle dans la direction
             float lag = (float)(PhotonNetwork.Time - info.SentServerTime);
 
-            // Instantiate the Snowball from the Snowball Prefab at the position of the Spawner
+            // Instantiate the ViralCharge from the Charge Prefab at the position of the Spawner
             GameObject charge = Instantiate(ViralPrefab, position + directionAndSpeed * Mathf.Clamp(lag, 0, 1.0f), Quaternion.identity);
             charge.tag = tag;
-            
-            /*Color colorCharge = ColorShotKMS;
-            var material = charge.GetComponent<MeshRenderer>().material;
-            var color = material.color;
-            color.a = 1f;
-
-            material.color = colorCharge;*/
             
             charge.GetComponent<Rigidbody>().velocity = directionAndSpeed;
 
@@ -93,14 +80,10 @@ namespace WS3
         }
 
         
-        public void HitByViralCharge(string test)
-        {
-            Debug.Log("HIT BY " + test + " CHARGE");
-            var rb = GetComponent<Rigidbody>();
-            //rb.AddForce((-transform.forward + (transform.up * 0.1f)) * 1.5f, ForceMode.Impulse);
-            
+        /*public void HitByViralCharge(string test)
+        {            
             gameObject.GetComponent<Spawnable>().TakeDamage();
-        }
+        }*/
 
         #endregion
 
@@ -114,19 +97,12 @@ namespace WS3
                 UserMeInstance = gameObject;
 
             }
-
-            // #Critical
-            // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
-            //DontDestroyOnLoad(gameObject);
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            Health = MaxHp;
-            previousHealth = MaxHp;
             DelayShoot = AppConfig.Inst.DelayShoot;
-            //ColorShotKMS = AppConfig.Inst.ColorShotKMS;
 
             Debug.Log("isLocalPlayer:" + UserMeInstance);
 
@@ -137,43 +113,8 @@ namespace WS3
                 followLocalPlayer();
                 activateLocalPlayer();
             }
-
-
-            //HealthUpdate();
-
         }
 
-
-       /* void HealthUpdate()
-        {
-            var material = healthBar.gameObject.GetComponent<Image>();
-            float ratio = (float)Health / MaxHp;
-
-            try
-            {
-                healthBar.fillAmount = Mathf.Clamp((float)Health / MaxHp, 0.0f, (float)AppConfig.Inst.LifeNumber);
-
-                if (ratio > 0.75f)
-                {
-                    material.color = Color.green;
-                }
-                else if (ratio >= 0.25f && ratio <= 0.75f)
-                {
-                    material.color = Color.yellow;
-
-                }
-                else if (ratio < 0.25f)
-                {
-                    material.color = Color.red;
-                }
-            }
-            catch (System.Exception)
-            {
-                Debug.Log("Can't change health bar color");
-            }
-        }*/
-
-        
 
         /// <summary>
         /// Get the GameObject of the CameraRig
@@ -233,9 +174,6 @@ namespace WS3
                     GameObjectLocalPlayerColor.GetComponent<Renderer>().material.color = Color.blue;
                     var kms_ui = UserMeInstance.transform.Find("UI");
                     kms_ui.gameObject.SetActive(true);
-                    /*var healthBarInnerParent = healthBar.transform.parent;
-                    kms_ui = healthBarInnerParent.parent.gameObject;
-                    kms_ui.SetActive(true);*/
                 }
                 catch (System.Exception)
                 {
@@ -247,7 +185,6 @@ namespace WS3
 
         public IEnumerator shoot()
         {
-            //photonView.RPC("ThrowCharge", RpcTarget.AllViaServer, ViralSpawner.position, 10.0f * ViralSpawner.forward);
             canFire = false;
             yield return new WaitForSeconds(DelayShoot);
             canFire = true;
@@ -259,14 +196,6 @@ namespace WS3
         {
             if (!photonView.IsMine) return;
 
-            /*if (this.Health <= 0)
-            {
-                Respawn();
-
-                ScoreManager sm = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
-                sm.ScoreUpdate();
-            }*/
-
             if (!isHTCuser)
             {
                 if (Input.GetButtonDown("Fire1") && canFire)
@@ -277,37 +206,15 @@ namespace WS3
             }
 
         }
-/*
-        void Respawn()
-        {
-            Health = MaxHp;
-            previousHealth = 0;
-            transform.position = SpawnPointPool.transform.position;
 
-            HealthUpdate();
-
-        }*/
-
-        /*#region IPunObservable implementation
+        #region IPunObservable implementation
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
-            if (stream.IsWriting)
-            {
-                // We own this player: send the others our data
-                stream.SendNext(Health);
-                
-            }
-            else
-            {
-                // Network player, receive data
-                Health = (int)stream.ReceiveNext();
-            }
-
-            if (previousHealth != Health) { HealthUpdate(); }
+            return;
         }
 
-        #endregion*/
+        #endregion
 
     }
 }

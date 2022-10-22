@@ -52,33 +52,4 @@ public class AppConfig
         return JsonUtility.ToJson(Inst, true);
     }
 
-    /// <summary>
-    /// Read from the json file called StreamingAssets/{Application.productName+".AppConfig.json"}
-    /// </summary>
-    /*public void UpdateValuesFromJsonFile()
-    {
-        string path = System.IO.Path.Combine(Application.streamingAssetsPath, Application.productName + ".AppConfig.json");
-        Debug.Log("File used: " + path);
-        UpdateValuesFromJsonString(System.IO.File.ReadAllText(path));
-
-    }
-
-
-    /// <summary>
-    /// Update the values from a Json String
-    /// </summary>
-    /// <param name="jsonString"></param>
-    public void UpdateValuesFromJsonString(string jsonString)
-    {
-        JsonUtility.FromJsonOverwrite(jsonString, Inst);
-        Debug.Log(ToJsonString());
-
-    }
-
-
-    public string ToJsonString()
-    {
-        return JsonUtility.ToJson(Inst, true);
-    }*/
-
 }

@@ -29,9 +29,8 @@ public class ViralChargeBehaviour : MonoBehaviour
         {
             if (hit.CompareTag("KMS"))
             {
-                UserManager um = hit.GetComponent<UserManager>();
-                Debug.Log("ViralCharge hit Scientist: " + hit);
-                um.HitByViralCharge("VIRAL CHARGGE");
+                //UserManager um = hit.GetComponent<UserManager>();
+                hit.GetComponent<Spawnable>().TakeDamage();
                 Destroy(gameObject);
             }
             else

@@ -4,21 +4,6 @@ using UnityEngine;
 
 public class AppConfigLoaderBehaviour : MonoBehaviour {
 
-    /*public string SceneToLoadAfterAppConfigLoaded;
-
-    // Use this for initialization
-    void Awake () {
-        Debug.Log(Application.productName + ".AppConfig.json BEFORE LOADING");
-
-        AppConfig.Inst.UpdateValuesFromJsonFile();
-
-        if (!string.IsNullOrEmpty(SceneToLoadAfterAppConfigLoaded))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(SceneToLoadAfterAppConfigLoaded);
-        }
-        
-	}*/
-
     [SerializeField] private string m_SceneToLoadAfterAppConfig;
     [SerializeField] private string m_AppConfigFilePath;
 

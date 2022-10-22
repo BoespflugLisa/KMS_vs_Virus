@@ -1,6 +1,4 @@
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using WS3;
@@ -34,7 +32,7 @@ public class Spawnable : MonoBehaviourPunCallbacks, IPunObservable
         {
             isHtcUser = true;
             virusPlayer = vrm.virusPlayer;
-        }
+        }        
         
         Health = MaxHp;
         previousHealth = MaxHp;
@@ -67,8 +65,6 @@ public class Spawnable : MonoBehaviourPunCallbacks, IPunObservable
             virusPlayer.GetComponent<Spawnable>().Health = Health;
         }
 
-        //.GetComponent<Image>();//.gameObject.GetComponent<Image>();
-        Debug.Log(healthBar);
         float ratio = (float)Health / MaxHp;
 
         try
@@ -88,7 +84,6 @@ public class Spawnable : MonoBehaviourPunCallbacks, IPunObservable
             {
                 material.color = Color.red;
             }
-        Debug.Log("Color HealthBAR : " + material.color);
         }
         catch (System.Exception)
         {
@@ -108,13 +103,11 @@ public class Spawnable : MonoBehaviourPunCallbacks, IPunObservable
     }
     public void TakeDamage()
     {
-        Debug.Log("J'ai pris des dégats");
         previousHealth = Health;
-        Debug.Log("LIFE POINT Before shoot : " + Health);
         Health -= 1;
-        Debug.Log("LIFE POINT After Shoot : " + Health);
         HealthUpdate();
     }
+
 
     #region IPunObservable implementation
 

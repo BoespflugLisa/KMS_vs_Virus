@@ -8,6 +8,7 @@ namespace WS3
     public class ChargeBehaviour : MonoBehaviour
     {
         private Color color_kms_charge; 
+
         // Start is called before the first frame update
         void Start()
         {
@@ -36,11 +37,10 @@ namespace WS3
 
                 if(hit.CompareTag("Virus"))
                 {
-                    //VRManager vrm = hit.GetComponent<VRManager>();
                     var vrm = hit.GetComponentInParent<VRManager>();
-                    UserManager pv_um = vrm.virusPlayer.GetComponent<UserManager>();
-                    Debug.Log("Get userManager : " + pv_um.name);
-                    pv_um.HitByViralCharge("ANTI VIRAL");
+                    GameObject pv = vrm.virusPlayer;
+                    Debug.Log("Get userManager : " + pv.name);
+                    pv.GetComponent<Spawnable>().TakeDamage();
                     Destroy(gameObject);
                 }
                 else
