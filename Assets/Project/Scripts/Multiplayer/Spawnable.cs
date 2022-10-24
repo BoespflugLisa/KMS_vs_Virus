@@ -46,9 +46,6 @@ public class Spawnable : MonoBehaviourPunCallbacks, IPunObservable
         if (this.Health <= 0)
         {
             Respawn();
-
-            ScoreManager sm = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
-            sm.ScoreUpdate();
         }
     }
 

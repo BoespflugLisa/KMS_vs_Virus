@@ -39,7 +39,6 @@ namespace WS3
                 {
                     var vrm = hit.GetComponentInParent<VRManager>();
                     GameObject pv = vrm.virusPlayer;
-                    Debug.Log("Get userManager : " + pv.name);
                     pv.GetComponent<Spawnable>().TakeDamage();
                     Destroy(gameObject);
                 }
